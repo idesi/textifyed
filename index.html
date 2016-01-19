@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Textifyed</title>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/tinymce.min.js"></script>
+        <script type="text/javascript" src="js/textifyed.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <header>Textifyed</header>
+        <section>
+            <div class="notesContainerDiv muted">
+                Click to add text....
+            </div>
+            <textarea class="input-xxlarge" id="txtDescription"></textarea>
+            <a href="#" class="btn btnDone">Done</a>
+            <a href="#" class="btn btnCancel" >Cancel</a>
+        </section>
+        <section id="details">
+            <article>
+                <p>Textifyed.js is a simple jQuery plug-in which helps you manage textareas on the page. Click in the div above to see textifyed in action. </p>
+                <p>Here is how it works </p>
+                <ul>
+                    <li>Click the div to see the textarea for text entry.</li>
+                    <li>Cancel & Done buttons hide the textarea & take you back to the div. </li>
+                    <li>If the text entered in the textarea is more than 3 lines then more/less links will be used to save space.</li>
+                    <li>Size of the textarea depends on the amount of text displayed in div i.e. If you clicked more to see all of the text, then the textarea displayed will be larger to accomodate all the text.</li>
+                </ul>
+                </p>
+            </article>
+            <article>
+                <h4>Usage</h4>
+                <p>
+                    Textifyed is very easy to use. Set up the html syntax like the example below.
+                </p>
+                <section class="codeBlock">
+                    <pre>&lt;div class="containerDiv"&gt;&lt;/div&gt;</pre>
+                    <pre>&lt;textarea#txtDescription"&gt;&lt;/textarea&gt;</pre>
+                    <pre>&lt;a href="#" class="btnDone"&gt;Done&lt;/a&gt;</pre>
+                    <pre>&lt;a href="#" class="btnCancel"&gt;Cancel&lt;/a&gt;</pre>
+                </section>
+            </article>
+            <article>
+                <h4>Options</h4>
+                <p>Initialize textifyed by the following code</p>
+                <section class="codeBlock">
+                    <pre>$('textarea#txtDescription]').textifyed({text: '', div: '.notesContainerDiv'});</pre>
+                </section>
+                <p>The code below demonstrates how TinyMCE can be used alongside Textifyed. Textifyed listens to the "custom:init" event when working with TinyMCE.<p>
+                <section class="codeBlock">
+                    <pre>var Editor = function (el) {</pre>
+                    <pre>   var options = {</pre>
+                    <pre>       selector: '#' + el.attr('id'),</pre>
+                    <pre>       theme: 'modern',</pre>
+                    <pre>       setup: function (ed) {</pre>
+                        <pre>           ed.on('init', function () {</pre>
+                            <pre>               el.trigger('custom:init');</pre>
+                        <pre>           });</pre>
+                    <pre>       }</pre>
+                    <pre>   };</pre>
+
+                    <pre>   try {</pre>
+                    <pre>        window.tinymce.init(options);</pre>
+                    <pre>   } catch (e) {</pre>
+                    <pre>        window.alert(e.message);</pre>
+                    <pre>   }</pre>
+                    <pre>};</pre>
+                    <pre>$('textarea#txtDescription').textifyed({text: '', div: '.containerDiv', Editor: Editor});</pre>
+                </section>
+                <p>In the example above we pass in two options 'text' & 'div' to textifyed. The list below shows all the possible options that can be used and what the purpose of each is.</p>
+                <table>
+                    <tr>
+                        <td>trigger</td>
+                        <td>The event that will be used to toggle the visibility of textarea. Default is 'click'.</td>
+                    </tr>
+                    <tr>
+                        <td>placeholder</td>
+                        <td>The placeholder text to be displayed if the no text is entered. Defaults to 'Click to add text..'</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>The text to be displayed in the div and textarea.</td>
+                    </tr>
+                    <tr>
+                        <td>div</td>
+                        <td>The div which will be used by the plug-in.</td>
+                    </tr>
+                    <tr>
+                        <td>Editor</td>
+                        <td>The TinyMCE Editor constructor which will be used to create rich text experience. If no Editor instance is passed then the default textarea behavior will be used.
+                        </td>
+                    </tr>
+                </table>
+            </article>
+            <article>
+                <a href="https://github.com/idesi/textifyed" class="btn btnDone">Download</a>
+            </article>
+        </section>
+    </body>
+    <script type="text/javascript">
+    (function ($){
+        var Editor = function (el) {
+            var options = {
+                selector: '#' + el.attr('id'),
+                theme: 'modern',
+                menubar: false,
+                paste_as_text: true,
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+                setup: function (ed) {
+                    ed.on('init', function () {
+                        el.trigger('custom:init');
+                    });
+                }
+            };
+
+            try {
+                window.tinymce.init(options);
+            } catch (e) {
+                window.alert(e.message);
+            }
+        };
+        $('textarea#txtDescription').textifyed({text: '', div: '.notesContainerDiv', Editor: Editor});
+    })(jQuery);
+    </script>
+</html>
+
+
+            
