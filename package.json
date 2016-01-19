@@ -1,6 +1,6 @@
 {
   "name": "textifyed",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A simple jQuery plug-in which helps you manage textareas on the page.",
   "main": "js/textifyed.js",
   "scripts": {
