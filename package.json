@@ -1,0 +1,29 @@
+{
+  "name": "textifyed",
+  "version": "2.0.0",
+  "description": "A simple jQuery plug-in which helps you manage textareas on the page.",
+  "main": "js/textifyed.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idesi/textifyed.git"
+  },
+  "keywords": [
+    "textifyed",
+    "textarea",
+    "expand",
+    "collapse",
+    "div"
+  ],
+  "author": "Watandeep Sekhon <watan.cp@gmail.com> (http://wsekhon.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/idesi/textifyed/issues"
+  },
+  "homepage": "https://github.com/idesi/textifyed#readme",
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
+}
