@@ -28,8 +28,8 @@
         factory(jQuery);
     }
 }(function ($) {
-    function Textify(el, options) {
-        var opts = $.extend({}, $.fn.textify.defaults, options);
+    function Textifyed(el, options) {
+        var opts = $.extend({}, $.fn.textifyed.defaults, options);
         this.text = opts.text;
         this.placeholder = opts.placeholder;
         this.div = $(opts.div);
@@ -42,10 +42,10 @@
         this.init();
     };
 
-    Textify.prototype = {
+    Textifyed.prototype = {
         lessText: ' Less...',
         moreText: ' More...',
-        constructor: Textify,
+        constructor: Textifyed,
         _events: [],
         _attachEvents: function () {
             var divEventObj = {};
@@ -143,12 +143,12 @@
         },
         notesDivClick : function() {
             this.hideDivShowTextarea();
-            this.div.trigger('textify:notesDivClick');
+            this.div.trigger('textifyed:notesDivClick');
         },
         done : function (e) {
             var val = this.getTextareaVal(),
             $el = $(e.currentTarget);
-            $el.trigger('textify:done', val);
+            $el.trigger('textifyed:done', val);
 
             this.text = $.trim(val);
             
@@ -161,7 +161,7 @@
             this.setTextareaVal();
 
             var $el = $(e.currentTarget);
-            $el.trigger('textify:cancel');
+            $el.trigger('textifyed:cancel');
 
             this.showDivHideTextarea();
             this.setNotes();
@@ -204,15 +204,15 @@
         }
     };
 
-    $.fn.textify = function (option) {
+    $.fn.textifyed = function (option) {
         var args = Array.apply(null, arguments);
         args.shift();
         return this.each(function () {
             var $this = $(this),
-                data = $this.data('textify'),
+                data = $this.data('textifyed'),
                 options = typeof option == 'object' && option;
             if (!data) {
-                $this.data('textify', (data = new Textify(this, options)));
+                $this.data('textifyed', (data = new Textifyed(this, options)));
             }
 
             if (typeof option == 'string' && typeof data[option] == 'function') {
@@ -221,7 +221,7 @@
         });
     };
 
-    $.fn.textify.defaults = {
+    $.fn.textifyed.defaults = {
         trigger: 'click',
         placeholder: 'Click to add text..',
         text: '',

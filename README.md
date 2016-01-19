@@ -48,5 +48,5 @@ Triggered when the done button is clicked.
 Triggered when the cancel button is clicked.
 
 ##Demo
-Please visit http://idesi.github.io/Textifyed/ for a live demo and futher code examples
+Please visit http://idesi.github.io/textifyed/ for a live demo and futher code examples
 
