@@ -55,7 +55,7 @@
                 [this.btnDone, { click: $.proxy(this.done, this) }],
                 [this.btnCancel, { click: $.proxy(this.cancel, this) }]
             ];
-            
+
             for (var i = 0, el, ev; i < this._events.length; i++) {
                 el = this._events[i][0];
                 ev = this._events[i][1];
@@ -65,12 +65,12 @@
         init: function () {
             if (this.Editor) {
                 this.attachEditor();
-                //The custom even takes some time to fire so let's hide all the textarea controls right away rather than waiting 
+                //The custom even takes some time to fire so let's hide all the textarea controls right away rather than waiting
                 this.showDivHideTextarea();
             } else {
                 this.setNotes();
             }
-            
+
             this._attachEvents();
         },
         setTextarea: function() {
@@ -112,7 +112,7 @@
         hideDivShowTextarea: function () {
             //If there is an Editor constructor but this.textarea still the element (not the tinyMCE instance) then attach the tinyMCE editor instance to this.textarea
             if (this.Editor && this.textarea === this.$el) {
-                //this.attachEditor ends up collapsing the div, and throws off div.height. 
+                //this.attachEditor ends up collapsing the div, and throws off div.height.
                 //So if the div was expanded, we will expand it again by firing the click event on the more button
                 var expanded = this.btnMore != null && this.btnMore.text() === this.lessText;
                 this.attachEditor();
@@ -128,7 +128,7 @@
 
             div.hide();
             this.textarea.show();
-            
+
             if (this.editor == null) {
                 this.textarea.height(textareaHeight + 'px').focus();
             } else {
@@ -151,7 +151,7 @@
             $el.trigger('textifyed:done', val);
 
             this.text = $.trim(val);
-            
+
             this.showDivHideTextarea();
             this.setNotes();
             this.collapse();
@@ -175,14 +175,13 @@
                 item.css({ 'height': lineHeight + 'px', overflow: 'hidden' });
 
                 if (item.siblings('.moreLink').length == 0) {
-                    var actualTextarea = this.editor ? this.textarea : this.div.nextAll('textarea').first();
-                    actualTextarea.after("<a href='#' class='moreLink'> More...</a>");
+                    this.$el.after("<a href='#' class='moreLink'> More...</a>");
                 } else {
                     item.siblings('.moreLink').text(this.moreText).show();
                 }
             }
             this.btnMore = item.siblings('.moreLink').length > 0 ? item.siblings('.moreLink') : null;
-            
+
             if (this.btnMore != null) {
                 this.btnMore
                     .off('click', this.moreLessToggle)
