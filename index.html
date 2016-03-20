@@ -25,7 +25,7 @@
                 <ul>
                     <li>Click the div to see the textarea for text entry.</li>
                     <li>Cancel & Done buttons hide the textarea & take you back to the div. </li>
-                    <li>If the text entered in the textarea is more than 3 lines then more/less links will be used to save space.</li>
+                    <li>If the text entered in the textarea is more than 3 lines then more/less links will be used to save space. (Note: When using TinyMCE use Shift+Enter)</li>
                     <li>Size of the textarea depends on the amount of text displayed in div i.e. If you clicked more to see all of the text, then the textarea displayed will be larger to accomodate all the text.</li>
                 </ul>
                 </p>
@@ -121,7 +121,7 @@
                 window.alert(e.message);
             }
         };
-        $('textarea#txtDescription').textifyed({text: '', div: '.notesContainerDiv', Editor: Editor});
+        $('textarea#txtDescription').textifyed({text: '', div: '.notesContainerDiv', Editor: Editor, placeholder: 'Click here to try...'});
     })(jQuery);
     </script>
 </html>

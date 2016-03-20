@@ -175,8 +175,7 @@
                 item.css({ 'height': lineHeight + 'px', overflow: 'hidden' });
 
                 if (item.siblings('.moreLink').length == 0) {
-                    var actualTextarea = this.editor ? this.textarea : this.div.nextAll('textarea').first();
-                    actualTextarea.after("<a href='#' class='moreLink'> More...</a>");
+                    this.$el.after("<a href='#' class='moreLink'> More...</a>");
                 } else {
                     item.siblings('.moreLink').text(this.moreText).show();
                 }

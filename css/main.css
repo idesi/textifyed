@@ -57,7 +57,7 @@ div.notesContainerDiv:hover {
     cursor: pointer;
 }
 
-div > pre {
+div > pre, div > pre p {
 	margin: 0;
     font-family: 'Roboto Slab', serif;
 }
