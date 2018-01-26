@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/idesi/textifyed#readme",
   "dependencies": {
-    "jquery": "^2.2.0"
+    "jquery": "^3.0.0"
   }
 }
